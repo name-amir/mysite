@@ -1,14 +1,15 @@
-
 from django.urls import path
-from blog.views import *
+from blog.views import blog_view, blog_single
 
 app_name = 'blog'
 
 urlpatterns = [
     path('', blog_view, name='index'),
-    path('/single', blog_single, name='single'),
-    # path('<str:name>/lastname/<str:family_name>/<int:age>', test, name='test')
-    path('post-<int:pid>', test, name='test')
-
-
+    path('/single', blog_single, name='single'),  
 ]
+
+    # path('blog/<int:pk>/', counted_views.blog_single, name='blog_single'),
+    # path('/single-<int:pid>/', blog_single, name='single'),
+    # path('post-<int:pid>', test, name='test')
+
+
