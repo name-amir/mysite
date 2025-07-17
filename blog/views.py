@@ -18,9 +18,9 @@ def blog_single(request,pid):
 
 
 # def test(request,name,family_name,age):
-def test(request,pid):
+def test(request):
+    return render(request, 'test.html')
     # post = Post.objects.get(id=pid)
-    post = get_object_or_404(Post,pk=pid)
-    context = {'post':post}
-    
-    return render(request, 'test.html', context)
+    # post = get_object_or_404(Post,pk=pid)
+    # context = {'post':post}
+
