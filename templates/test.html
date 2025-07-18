@@ -11,7 +11,7 @@
     <h1>Testing page</h1>
     <p>test: {% posts as totalposts %}</p>
     {% for post in totalposts %}
-    <p> {{post}}</p>
+    <p> {{post.conttent|snippet}}</p>
     {% endfor %}
 <!--    <p>{{post.title}}</p>-->
     <!-- <p>{{name}}</p>
