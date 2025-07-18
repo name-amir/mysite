@@ -6,9 +6,12 @@ from blog.models import Post
 
 # Create your views here.
 
-def blog_view(request):
+def blog_view(request,cat_name=None):
     posts = Post.objects.filter(status=1)
-    return render(request, 'blog/blog-home.html', {'posts': posts})
+    if cat_name:
+        posts = posts.filter(category__name=cat_name)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)
 
 def blog_single(request,pid):
     posts = Post.objects.filter(status=1)
