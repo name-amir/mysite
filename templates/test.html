@@ -1,4 +1,4 @@
-{% load blog_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,24 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Testing page</h1>
-    <p>test: </p>
-    {% popularposts %}
-<!--    <p>{{post.title}}</p>-->
-    <!-- <p>{{name}}</p>
-    <p>{{family_name}}</p>
-    <p>{{age}}</p> -->
-    <!-- {{posts}}
-    {% for post in posts %}
+<form action="{% url 'website:test' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">submit</button>
+</form>
 
-    {% if post.status == 0 %}
-     <p> not published yet </p>
-
-    {% else %}
-    <h1>{{post.title}}</h1>
-    <p>{{post.conttent}}</p>
-    <small>{{post.published_date}}</small>
-    {% endif %}
-    {% endfor %} -->
 </body>
 </html>
