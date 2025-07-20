@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from website.forms import NameForm,ConatactForm
-from django.http import HttpResponse,JsonResponse
+from website.forms import NameForm,ConatactForm,NewsletterForm
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 
 # Create your views here.
@@ -14,7 +14,12 @@ def about_view(request):
     return render(request, 'website/about.html')
 
 def contact_view(request):
-    return render(request, 'website/contact.html')
+    if request.method == 'POST':
+        form = ConatactForm(request.POST)
+        if form.is_valid():
+            form.save()
+    form = ConatactForm()
+    return render(request, 'website/contact.html',{'form':form})
 
 def test_view(request):
     # context = {'name': 'Amir','lastname':'Moradi'}
@@ -28,3 +33,14 @@ def test_view(request):
             return HttpResponse('not valid')
     form = ConatactForm()
     return render(request, 'test.html',{'form':form})
+
+def newsletter_view(request):
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+
+    else:
+        return HttpResponseRedirect('/')
+
