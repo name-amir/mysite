@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from website.forms import NameForm,ConatactForm,NewsletterForm
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.contrib import messages
 
 
 # Create your views here.
@@ -18,6 +19,10 @@ def contact_view(request):
         form = ConatactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(request,messages.SUCCESS,'your ticket submited seuccessfuly')
+
+        else:
+            messages.add_message(request, messages.ERROR, 'your ticket didnt submited seuccessfuly')
     form = ConatactForm()
     return render(request, 'website/contact.html',{'form':form})
 
