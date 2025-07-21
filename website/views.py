@@ -18,8 +18,12 @@ def contact_view(request):
     if request.method == 'POST':
         form = ConatactForm(request.POST)
         if form.is_valid():
-            form.save()
+            name = form.cleaned_data.get('name')
             messages.add_message(request,messages.SUCCESS,'your ticket submited seuccessfuly')
+            if name:  # فقط اگر نامی وارد شده باشد
+                form.cleaned_data['name'] = 'Anonymous'
+            form.save()
+
 
         else:
             messages.add_message(request, messages.ERROR, 'your ticket didnt submited seuccessfuly')

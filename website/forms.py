@@ -1,8 +1,11 @@
 from django import forms
+from django.template.defaultfilters import default
+from pycparser.c_ast import Default
+
 from website.models import Contact,Newsletter
 
 
-class NameForm(forms.Form):
+class NameForm(forms.ModelForm):
     name = forms.CharField(max_length=255)
     email = forms.EmailField()
     subject = forms.CharField(max_length=255)
