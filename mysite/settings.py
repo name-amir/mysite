@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import STATIC_ROOT, STATICFILES_DIRS
+from django.conf.global_settings import STATIC_ROOT, STATICFILES_DIRS, X_FRAME_OPTIONS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'blog',
     "taggit",
+    'django_summernote',
 ]
 # sites framework
 SITE_ID = 2
@@ -55,6 +56,45 @@ SITE_ID = 2
 # robots
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
+
+# summernote cofig
+SUMMERNOTE_THEME = 'bs4'
+
+# SUMMERNOTE_CONFIG = {
+#     # Using SummernoteWidget - iframe mode, default
+#     'iframe': True,
+#
+#     # Or, you can set it to `False` to use SummernoteInplaceWidget by default - no iframe mode
+#     # In this case, you have to load Bootstrap/jQuery sources and dependencies manually.
+#     # Use this when you're already using Bootstrap/jQuery based themes.
+#     'iframe': False,
+#
+#     # You can put custom Summernote settings
+#     'summernote': {
+#         # As an example, using Summernote Air-mode
+#         'airMode': False,
+#
+#         # Change editor size
+#         'width': '100%',
+#         'height': '480',
+#
+#         # Use proper language setting automatically (default)
+#         'lang': None,
+#
+#         # Toolbar customization
+#         # https://summernote.org/deep-dive/#custom-toolbar-popover
+#         'toolbar': [
+#             ['style', ['style']],
+#             ['font', ['bold', 'underline', 'clear']],
+#             ['fontname', ['fontname']],
+#             ['color', ['color']],
+#             ['para', ['ul', 'ol', 'paragraph']],
+#             ['table', ['table']],
+#             ['insert', ['link', 'picture', 'video']],
+#             ['view', ['fullscreen', 'codeview', 'help']],
+#         ],
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,3 +195,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
