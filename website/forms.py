@@ -1,6 +1,7 @@
 from django import forms
 from django.template.defaultfilters import default
 from pycparser.c_ast import Default
+from captcha.fields import CaptchaField
 
 from website.models import Contact,Newsletter
 
@@ -12,6 +13,7 @@ class NameForm(forms.ModelForm):
     message = forms.CharField(widget=forms.Textarea)
 
 class ConatactForm(forms.ModelForm):
+    captcha = CaptchaField()
 
     class Meta:
         model = Contact
