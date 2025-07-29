@@ -24,9 +24,15 @@
       {% csrf_token %}
       <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign up</h1>
-      <label for="inputEmail" class="sr-only">Username</label>
       <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+      <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
+      <ul>
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
       <input type="password" name="password1" class="form-control" placeholder="Password" required>
       <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
       <div class="checkbox mb-3">
